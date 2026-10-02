@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Abdul School | Upparpally</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      color: #172b4d;
+      background: #f6faff;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: #0757a0;
+      color: white;
+      padding: 15px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .logo-circle {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: white;
+      color: #0757a0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #b9e0ff;
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      color: white;
+      background:
+        linear-gradient(rgba(5,70,130,0.82), rgba(10,130,210,0.82)),
+        url("https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1600&q=80")
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 23px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 28px;
+      border-radius: 30px;
+      background: white;
+      color: #0757a0;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 5px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .btn-blue {
+      background: #0757a0;
+      color: white;
+    }
+
+    /* GENERAL */
+    section {
+      padding: 80px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #0757a0;
+      font-size: 36px;
+      margin-bottom: 45px;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #1597e5;
+      margin: 12px auto;
+      border-radius: 5px;
+    }
+
+    /* ABOUT */
+    .about {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 35px 25px;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card-icon {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: #0757a0;
+      margin-bottom: 10px;
+    }
+
+    /* ANNOUNCEMENT */
+    .notice {
+      background: #e8f4ff;
+      border-left: 5px solid #0757a0;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      border-radius: 8px;
+    }
+
+    /* GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    /* ADMISSION */
+    .admission {
+      background: linear-gradient(135deg, #0757a0, #1597e5);
+      color: white;
+      text-align: center;
+    }
+
+    .admission .section-title {
+      color: white;
+    }
+
+    /* FORM */
+    .form-box {
+      max-width: 650px;
+      margin: auto;
+      background: white;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+    }
+
+    .form-box input,
+    .form-box textarea,
+    .form-box select {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 15px;
+      border: 1px solid #ccd8e5;
+      border-radius: 7px;
+      outline: none;
+    }
+
+    .form-box button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 7px;
+      background: #0757a0;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* CONTACT */
+    .contact {
+      text-align: center;
+    }
+
+    .contact-item {
+      margin: 12px;
+      font-size: 18px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #063b70;
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+
+      header {
+        padding: 12px 5%;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: #0757a0;
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .cards,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 60px 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+
+    <div class="logo">
+      <div class="logo-circle">🏫</div>
+      Abdul School
+    </div>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <nav id="nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#academics">Academics</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <h1>Abdul School</h1>
+
+      <p>
+        Empowering Students • Inspiring Futures
+      </p>
+
+      <a href="#admissions" class="btn">
+        Apply for Admission
+      </a>
+
+      <a href="#about" class="btn btn-blue">
+        Discover Our School
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+
+    <h2 class="section-title">About Abdul School</h2>
+
+    <div class="about">
+
+      <p>
+        Welcome to Abdul School, Upparpally. We are committed to
+        providing students with a positive learning environment where
+        education, character and personal development go hand in hand.
+      </p>
+
+      <br>
+
+      <p>
+        Our aim is to encourage curiosity, creativity, confidence and
+        responsible citizenship while helping every student reach
+        their potential.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ACADEMICS -->
+  <section id="academics">
+
+    <h2 class="section-title">Our Strengths</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <h3>Quality Education</h3>
+        <p>
+          A focused learning environment designed to support academic
+          development.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">👩‍🏫</div>
+        <h3>Dedicated Teachers</h3>
+        <p>
+          Teachers who guide students and encourage them to learn
+          with confidence.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌟</div>
+        <h3>All-Round Development</h3>
+        <p>
+          Supporting academic, creative, social and personal growth.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ANNOUNCEMENTS -->
+  <section>
+
+    <h2 class="section-title">School Announcements</h2>
+
+    <div class="notice">
+
+      📢 <strong>Admissions:</strong>
+      Admissions information will be updated here.
+
+      <br><br>
+
+      📢 <strong>Notice:</strong>
+      School announcements and important dates will appear here.
+
+    </div>
+
+  </section>
+
+
+  <!-- GALLERY -->
+  <section id="gallery">
+
+    <h2 class="section-title">School Gallery</h2>
+
+    <div class="gallery">
+
+      <img
+        src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=900&q=80"
+        alt="School building">
+
+      <img
+        src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80"
+        alt="Classroom">
+
+      <img
+        src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=900&q=80"
+        alt="Students">
+
+    </div>
+
+  </section>
+
+
+  <!-- ADMISSION -->
+  <section class="admission" id="admissions">
+
+    <h2 class="section-title">Admissions</h2>
+
+    <p>
+      Interested in joining Abdul School?
+    </p>
+
+    <p>
+      Submit the form below and the school can contact you.
+    </p>
+
+  </section>
+
+
+  <!-- ADMISSION FORM -->
+  <section>
+
+    <div class="form-box">
+
+      <h2 class="section-title">Admission Enquiry</h2>
+
+      <form onsubmit="submitForm(event)">
+
+        <input
+          type="text"
+          placeholder="Student Name"
+          required>
+
+        <input
+          type="text"
+          placeholder="Parent / Guardian Name"
+          required>
+
+        <input
+          type="tel"
+          placeholder="Phone Number"
+          required>
+
+        <select required>
+
+          <option value="">
+            Select Class
+          </option>
+
+          <option>Nursery</option>
+          <option>KG</option>
+          <option>Class 1</option>
+          <option>Class 2</option>
+          <option>Class 3</option>
+          <option>Class 4</option>
+          <option>Class 5</option>
+          <option>Class 6</option>
+          <option>Class 7</option>
+          <option>Class 8</option>
+          <option>Class 9</option>
+          <option>Class 10</option>
+
+        </select>
+
+        <textarea
+          rows="4"
+          placeholder="Message">
+        </textarea>
+
+        <button type="submit">
+          Submit Enquiry
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+
+    <h2 class="section-title">Contact Us</h2>
+
+    <div class="contact-item">
+      🏫 <strong>Abdul School</strong>
+    </div>
+
+    <div class="contact-item">
+      📍 Upparpally
+    </div>
+
+    <div class="contact-item">
+      📞 Phone: —
+    </div>
+
+    <div class="contact-item">
+      ✉️ Email: —
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <p>
+      © 2026 Abdul School, Upparpally.
+      All Rights Reserved.
+    </p>
+
+  </footer>
+
+
+  <script>
+
+    function toggleMenu() {
+      document.getElementById("nav").classList.toggle("active");
+    }
+
+    function submitForm(event) {
+
+      event.preventDefault();
+
+      alert(
+        "Thank you! Your admission enquiry has been received."
+      );
+
+    }
+
+  </script>
+
+</body>
+  </html>
